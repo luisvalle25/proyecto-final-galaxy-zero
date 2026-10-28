@@ -1,0 +1,55 @@
+<alpha-titulo title="Usuarios" router="/home/usuario/crear"></alpha-titulo>
+<section class="panel">
+  <div class="panel-head">
+    <div class="input-group" style="max-width: 340px">
+      <span class="input-group-text bg-white"
+        ><i class="bi bi-search"></i
+      ></span>
+      <input
+        type="search"
+        id="buscar"
+        class="form-control"
+        autocomplete="off"
+        placeholder="Buscar por nombre"
+        aria-label="Buscar usuarios"
+        (keyup.enter)="onSearch(txtSearch.value)"
+        #txtSearch
+      />
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover table-stack">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (usuario of usuarios(); track usuario.id) {
+        <tr>
+          <td class="fw-medium">{{ usuario.nombre }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>
+            @if(usuario.activo){
+            <i
+              class="bi bi-check-lg"
+              style="color: #3d9400; font-size: xx-large"
+            ></i>
+            }@else{
+            <i class="bi bi-x" style="color: #c83a2a; font-size: xx-large"></i>
+            }
+          </td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="3" class="text-center">
+            No se encontraron usuarios en la lista
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

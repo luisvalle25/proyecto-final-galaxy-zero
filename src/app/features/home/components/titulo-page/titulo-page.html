@@ -1,0 +1,14 @@
+<div class="page-head">
+  <div>
+    <h1>{{ title() }}</h1>
+  </div>
+  @if(router()){ @if(principalButton()){
+  <a [routerLink]="[router()]" class="btn btn-primary"
+    ><i class="bi bi-plus-lg me-1"></i>Nuevo</a
+  >
+  } @else {
+  <a [routerLink]="[router()]" class="btn btn-outline-primary"
+    ><i class="bi bi-arrow-left me-1"></i>Regresar al listado</a
+  >
+  } }
+</div>

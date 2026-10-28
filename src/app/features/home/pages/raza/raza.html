@@ -1,0 +1,57 @@
+<alpha-titulo title="Razas" router="/home/raza/crear"></alpha-titulo>
+<section class="panel">
+  <div class="panel-head">
+    <div class="input-group" style="max-width: 340px">
+      <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+      <input
+        type="search"
+        id="buscar"
+        class="form-control"
+        autocomplete="off"
+        placeholder="Buscar por nombre"
+        aria-label="Buscar especies"
+        (keyup.enter)="onSearch(txtSearch.value)"
+        #txtSearch
+      />
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover table-stack">
+      <thead>
+        <tr>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Estado</th>
+          <th class="text-end">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (raza of razas(); track raza.id) {
+          <tr>
+            <td class="fw-medium">{{ raza.especie }}</td>
+            <td class="fw-medium">{{ raza.nombre }}</td>
+            <td>
+              @if (raza.activo) {
+                <i class="bi bi-check-lg" style="color: #3d9400; font-size: xx-large"></i>
+              } @else {
+                <i class="bi bi-x" style="color: #c83a2a; font-size: xx-large"></i>
+              }
+            </td>
+            <td data-label="Acciones" class="text-end">
+              <a
+                (click)="onEliminar(raza)"
+                class="btn btn-sm btn-outline-danger"
+                aria-label="Eliminar"
+                ><i class="bi bi-trash"></i
+              ></a>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="text-center">No se encontraron razas en la lista</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

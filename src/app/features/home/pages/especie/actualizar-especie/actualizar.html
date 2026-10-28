@@ -1,0 +1,51 @@
+<alpha-titulo title="Editar Especie" router="/home/especie" [principalButton]="false"></alpha-titulo>
+<form [formGroup]="especieForm" (ngSubmit)="onSubmit()" class="panel needs-validation" novalidate>
+  <div class="form-section">
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          formControlName="nombre"
+          type="text"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': pf['nombre'].invalid && (pf['nombre'].touched || submitted),
+          }"
+          id="nombre"
+          autocomplete="off"
+          autofocus
+          required
+          maxlength="200"
+          placeholder="Nombre de la especie"
+        />
+        @if (pf['nombre'].hasError('required')) {
+          <div class="invalid-feedback">El nombre es requerido.</div>
+        }
+      </div>
+      <div class="col-12 mt-3">
+        <div class="form-check form-switch">
+          <input
+            formControlName="activo"
+            class="form-control form-check-input"
+            [ngClass]="{
+              'is-invalid': pf['activo'].invalid && (pf['activo'].touched || submitted),
+            }"
+            type="checkbox"
+            role="switch"
+            id="activo"
+          />
+          <label class="form-check-label" for="switchActivo">
+            {{ pf['activo']?.value ? 'Activo' : 'Inactivo' }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="d-flex flex-wrap justify-content-end gap-2 p-3 border-top"
+    style="background: #fafbfc; border-radius: 0 0 0.75rem 0.75rem"
+  >
+    <a routerLink="/home/especie" class="btn btn-outline-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1"></i>Guardar</button>
+  </div>
+</form>
