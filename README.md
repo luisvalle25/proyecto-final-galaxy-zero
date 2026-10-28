@@ -85,7 +85,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<TuContraseñaSegura>" \
 ### 1. Frontend
 
 ```bash
-git clone [https://github.com/luisvalle25/proyecto-final-zero]
+git clone [https://github.com/luisvalle25/proyecto-final-galaxy-zero]
 cd alpha-app
 npm install
 ```
